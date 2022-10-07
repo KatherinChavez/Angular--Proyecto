@@ -1,0 +1,26 @@
+.inicioContainer {
+  margin-top: 5%;
+} 
+
+h1{
+  color: #a7123c;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1%;
+  font-size: 50px;
+}
+p{
+  text-align: center;
+  color: #6b0723;
+  font-size: 25px;
+  margin-bottom: 4%;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+h3{
+  font-weight: bold;
+  color: #6b0723;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  padding-bottom: 15px;
+}

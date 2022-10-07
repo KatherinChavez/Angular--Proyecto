@@ -1,0 +1,16 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a [ngStyle]="{color: '#064d6b','font-family':'Cambria','font-weight':'bold','font-size.px':25}"
+            class="nav-link active">Comentarios</a>
+    </li>
+</ul>
+<div class="mainContainer">
+    <div class="Comentarios mt-1">
+        <ul>
+            <li *ngFor="let comment of comments">
+                <a [ngStyle]="{'font-size.px':18 , color: 'black','font-family':'Cambria', 'text-decoration': 'none'}"
+                    [routerLink]="['/comments', comment.id]">{{comment.email}}</a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a [ngStyle]="{color: '#064d6b','font-family':'Cambria','font-weight':'bold','font-size.px':25}"
+            class="nav-link active"> Contacto Proveedor</a>
+    </li>
+</ul>
+<div class="mainContainer mt-3">
+    <!-- <p>{{proveedors | json}}</p> -->
+<app-proveedor-card *ngFor="let proveedorL of proveedors" [proveedor]="proveedorL"></app-proveedor-card>
+
+</div>
+
+
+
+

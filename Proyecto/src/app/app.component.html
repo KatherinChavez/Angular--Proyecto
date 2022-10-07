@@ -1,0 +1,54 @@
+<div class="row">
+
+  <div class="col-md-3 col-lg-2">
+    <div id="sidebar">
+      <header>
+        <img class="img" src="./assets/logo/logo.png" alt="logo de la empresa">
+        <h1 [ngClass]="{titulo:'titulo'}">Armu T-Shirt</h1>
+      </header>
+      <ul class="nav  flex-column">
+        <li class="nav-item" routerLinkActice="active">
+          <a class="nav-link active" routerLink='/menu'>
+            <i class="bi bi-house-fill me-3"></i>
+            Inicio
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActice="active">
+          <a class="nav-link active" routerLink='/productos'>
+            <i class="bi bi-cart-check-fill me-3"></i>
+            Productos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink='/clientes'>
+            <i class="bi bi-people-fill me-3"></i>
+            Clientes
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink='/ordenes'>
+            <i class="bi bi-clipboard-data-fill me-3"></i>
+            Órdenes
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink='/comments'>
+            <i class="bi bi-chat-square-text-fill"></i>
+            Comentarios
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink='/proveedor'>
+            <i class="bi bi-person-lines-fill"></i>
+            Proveedor
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-md-9  col-lg-10">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

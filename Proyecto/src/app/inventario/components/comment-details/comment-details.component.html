@@ -1,0 +1,21 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a [ngStyle]="{color: '#064d6b','font-family':'Cambria','font-weight':'bold','font-size.px':25}"
+            class="nav-link active">Detalle</a>
+    </li>
+</ul>
+
+<div class="row">
+    <div class=" col-10 mainContainer mt-5">
+        <div class="detalle mt-2" *ngIf="comment">
+            <p [ngStyle]="{'font-size.px':20 , 'font-weight': 'bold','font-family':'Cambria'}"> Correo Electrónico</p>
+            <p [ngStyle]="{'font-size.px':18 ,'font-family':'Cambria'}">{{comment.email}}</p>
+
+            <p [ngStyle]="{'font-size.px':20 , 'font-weight': 'bold','font-family':'Cambria'}">Mensaje</p>
+            <p [ngStyle]="{'font-size.px':18 ,'font-family':'Cambria'}">{{comment.body}}</p>
+        </div>
+    </div>
+    <div class="col-2 mt-5 d-flex-justify-content-center">
+        <button type="submit" routerLink="/comments"><i class="bi bi-caret-left-fill"></i></button>
+    </div>
+</div>

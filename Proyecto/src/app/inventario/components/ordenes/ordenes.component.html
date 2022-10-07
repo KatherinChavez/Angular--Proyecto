@@ -1,0 +1,119 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a [ngStyle]="{color: '#064d6b','font-family':'Cambria','font-weight':'bold','font-size.px':25}"
+            class="nav-link active">Órdenes de compra</a>
+    </li>
+</ul>
+<div class="mainContainer">
+    <form (ngSubmit)="onSubmit()" [formGroup]="ordenesForm">
+
+        <div class="row mt-1">
+            <div class=" col-6 nombreProductoContainer mb-4">
+                <label for="name" class="form-label"> Nombre del Producto</label>
+                <input id="nameP" [placeholder]="placeholderNameP" class="form-control nameP" name="nameP" type="text"
+                    required formControlName="nameP" [(ngModel)]="ordenes.nameP">
+                <p *ngIf="ordenesForm.get('nameP')?.touched && ordenesForm.get('nameP')?.errors?.['required']"
+                    class="alert alert-danger mt-1">requerido!</p>
+            </div>
+
+            <div class="col-6 nombreClienteContainer mb-4">
+                <label for="nameC" class="form-label labelName"> Nombre del Cliente</label>
+                <input id="nameC" [placeholder]="placeholderNameC" class="form-control nameC" name="nameC" type="text"
+                    required formControlName="nameC" [(ngModel)]="ordenes.nameC">
+                <p *ngIf="ordenesForm.get('nameC')?.touched && ordenesForm.get('nameC')?.errors?.['required']"
+                    class="alert alert-danger mt-1">requerido!</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4 fechaContainer mb-4">
+                <label for="fecha" class="form-label">Fecha</label>
+                <input id="fecha" class="form-control " name="fecha" type="date" required formControlName="fecha"
+                    [(ngModel)]="ordenes.fecha">
+                <p *ngIf="ordenesForm.get('fecha')?.touched && ordenesForm.get('fecha')?.errors?.['required']"
+                    class="alert alert-danger mt-1">requerido!</p>
+            </div>
+            <div class=" col-4 telefonoContainer mb-4">
+                <label for="tel" class="form-label">Teléfono</label>
+                <input id="tel" class="form-control Tel" [placeholder]="placeholderTel" name="tel" type="number"
+                    required formControlName="tel" [(ngModel)]="ordenes.tel">
+                <p *ngIf="ordenesForm.get('tel')?.touched && ordenesForm.get('tel')?.errors?.['required']"
+                    class="alert alert-danger mt-1">requerido!</p>
+            </div>
+
+            <div class="col-4 direccionContainer mb-4">
+                <label for="direc" class="form-label"> Dirección</label>
+                <input id="direc" [placeholder]="placeholderDirecc" class="form-control" name="direc" type="text"
+                    required formControlName="direc" [(ngModel)]="ordenes.direc">
+                <p *ngIf="ordenesForm.get('direc')?.touched && ordenesForm.get('direc')?.errors?.['required']"
+                    class="alert alert-danger mt-1">requerido!</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4 cantidadContainer mb-4">
+                <label for="cantidad" class="form-label">Cantidad</label>
+                <input id="cantidad" class="form-control" name="cantidad" type="number" required
+                    formControlName="cantidad" [(ngModel)]="ordenes.cantidad">
+                <p *ngIf="ordenesForm.get('cantidad')?.touched && ordenesForm.get('cantidad')?.errors?.['required']"
+                    class="alert alert-danger mt-1"> requerido!</p>
+            </div>
+
+            <div class=" col-4 descContainer mb-4">
+                <label class="form-label " for="desc">Descuento </label>
+                <select class="form-select form-select-sm" id="desc" name="desc" title="desc" formControlName="desc"
+                    [(ngModel)]="ordenes.desc">
+                    <option [defaultSelected]="true" [disabled]="true"
+                        [ngStyle]="{'font-family':'Cambria','font-size.px':17}">Descuento</option>
+                    <option value="0">0</option>
+                    <option value="5">5%</option>
+                    <option value="10">10%</option>
+                </select>
+                <p *ngIf="ordenesForm.get('desc')?.touched && ordenesForm.get('desc')?.errors?.['required']"
+                    class="alert alert-danger mt-1">requerido!</p>
+            </div>
+
+            <div class=" col-4 totalContainer mb-4">
+                <label for="costo" class="form-label">Total</label>
+                <input id="costo" class="form-control" name="costo" type="number" required formControlName="costo"
+                    [(ngModel)]="ordenes.costo">
+                <p *ngIf="ordenesForm.get('costo')?.touched && ordenesForm.get('costo')?.errors?.['required']"
+                    class="alert alert-danger mt-1"> requerido!</p>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <button [ngStyle]="{'background':'#b2d4e4','border-color':'#074c69','font-weight':'bold'}" class="btn"
+                type="submit" [disabled]="ordenesForm.invalid" (click)="guardar()" (click)="show()">Guardar</button>
+        </div>
+    </form>
+</div>
+
+<div class="tableContainer ">
+    <h3 [ngStyle]="{color: '#064d6b','font-family':'Cambria','font-weight':'bold','font-size.px':20}">Datos Ingresados
+    </h3>
+    <div *ngIf="showTable">
+        <table class="table table-striped">
+            <tr>
+                <th>Fecha</th>
+                <th>Producto</th>
+                <th>Cliente</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Cantidad</th>
+                <th>Descuento</th>
+                <th>Total</th>
+            </tr>
+            <tr *ngFor="let ordenes of ordenesC">
+                <td>{{ordenes.fecha}}</td>
+                <td>{{ordenes.nameP}}</td>
+                <td>{{ordenes.nameC}}</td>
+                <td>{{ordenes.direc}}</td>
+                <td>{{ordenes.tel}}</td>
+                <td>{{ordenes.cantidad}}</td>
+                <td>{{ordenes.desc}}</td>
+                <td>{{ordenes.costo}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a [ngStyle]="{color: '#064d6b','font-family':'Cambria','font-weight':'bold','font-size.px':25}"
+            class="nav-link active"> Detalle del Cliente</a>
+    </li>
+</ul>
+<div class="mainContainer">
+    <form (ngSubmit)="onSubmit()" [formGroup]="clienteForm">
+
+        <div class=" nombreContainer mb-4">
+            <label for="name" class="form-label"> Nombre completo</label>
+            <input id="name" [placeholder]="placeholderName" class="form-control" name="name" type="text" required
+                formControlName="name" [(ngModel)]="cliente.name">
+            <p *ngIf="clienteForm.get('name')?.touched && clienteForm.get('name')?.errors?.['required']"
+                class="alert alert-danger mt-1">Campo es requerido!</p>
+        </div>
+
+        <div class="TelContainer mb-4">
+            <label for="tel1" class="form-label">Teléfono 1</label>
+            <input id="tel1" class="form-control" [placeholder]="placeholderTel" name="tel1" type="number" required
+                formControlName="tel1" [(ngModel)]="cliente.tel1">
+            <p *ngIf="clienteForm.get('tel1')?.touched && clienteForm.get('tel1')?.errors?.['required']"
+                class="alert alert-danger mt-1">Campo es requerido!</p>
+        </div>
+
+        <div class="TelAdicionalContainer">
+            <label for="tel2" class="form-label">Teléfono 2</label>
+            <input id="tel2" [placeholder]="placeholderTel2" class="form-control" name="tel2" type="number" required
+                formControlName="tel2" [(ngModel)]="cliente.tel2">
+            <p *ngIf="clienteForm.get('tel2')?.touched && clienteForm.get('tel2')?.errors?.['required']"
+                class="alert alert-danger mt-1">requerido o coloque 0</p>
+        </div>
+
+        <div class=" correoContainer mb-4">
+            <label for="email" class="form-label"> Correo Electrónico</label>
+            <input id="email" [placeholder]=" placeholderEmail" class="form-control" name="email" type="text" required
+                formControlName="email" [(ngModel)]="cliente.email">
+            <p *ngIf="clienteForm.get('email')?.touched && clienteForm.get('email')?.errors?.['required']"
+                class="alert alert-danger mt-1">Campo es requerido!</p>
+        </div>
+
+        <div class=" direccionContainer mb-4">
+            <label for="direc" class="form-label"> Dirección</label>
+            <input id="direc" [placeholder]="placeholderDirecc" class="form-control" name="direc" type="text" required
+                formControlName="direc" [(ngModel)]="cliente.direc">
+            <p *ngIf="clienteForm.get('direc')?.touched && clienteForm.get('direc')?.errors?.['required']"
+                class="alert alert-danger mt-1">Campo es requerido!</p>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <button [ngStyle]="{'background':'#b2d4e4','border-color':'#074c69','font-weight':'bold'}" class="btn"
+                type="submit" [disabled]="clienteForm.invalid" (click)="guardar()" (click)="show()">Guardar</button>
+        </div>
+    </form>
+</div>
+
+<div class="tableContainer">
+    <h3 [ngStyle]="{color: '#064d6b','font-family':'Cambria','font-weight':'bold','font-size.px':20}">Datos Ingresados
+    </h3>
+    <div *ngIf="showTable">
+        <table class="table table-striped">
+            <tr>
+                <th>Nombre del cliente</th>
+                <th>Número telefónico</th>
+                <th>Número telefonico adicional</th>
+                <th>Correo electrónico</th>
+                <th>Dirección</th>
+            </tr>
+            <tr *ngFor="let clientes of clientes">
+                <td>{{clientes.name}}</td>
+                <td>{{clientes.tel1}}</td>
+                <td>{{clientes.tel2}}</td>
+                <td>{{clientes.email}}</td>
+                <td>{{clientes.direc}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
